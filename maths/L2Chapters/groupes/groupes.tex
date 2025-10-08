@@ -1,0 +1,46 @@
+\newcommand{\znz}[1] {
+    $\mathbb{Z}/#1\mathbb{Z}$
+}
+
+\chapter{groupes et anneau \znz[n]}
+
+\begin{definition}[groupe]
+    Un groupe $G$ est un ensemble muni d'une loi de composition si et seulement si:
+    \begin{itemize}
+	\item La loi admet un element neutre $e$ tel que 
+	\begin{equation}
+	    \forall a, \exists e \in G^2, a \circ e = e \circ a = a
+	\end{equation}
+
+	\item Tout élement possède un symmetrique (noté $sym_{\circ}(a)$) tel que
+	\begin{equation}
+	    \forall a \in G \exists sym_{\circ}(a), a \circ sym_{\circ}(a) = e
+	\end{equation}
+
+	\item la loi est associative, càd
+	\begin{equation}
+	    \forall a, b, c \in G^3, (a \circ b) \circ c \equiv a \circ (b \circ c)
+	\end{equation}
+    \end{itemize}
+    si de plus, la loi est commutative, càd $a \circ b \equiv b \circ a$ alors le group est dit commutatif
+\end{definition}
+
+
+\begin{definition}[L'anneau \znz[n] ]
+    l'anneau \znz[n] est un ensemble contenant tout les entiers de $0$ à $i$.\\
+\end{definition}
+
+
+
+\section{Generateurs}
+
+\begin{definition}[Generateur]
+    un generateur est un nombre faisant partie de l'anneau $\mathbb{Z}/_n{\mathbb{Z}}$
+\end{definition}
+
+
+\begin{definition}[Trouver le symmetrique]
+    il est assez facile de trouver le symmetrique additive d'un élément de \znz{n}. \\
+    En effet, $sym_+(a) = n-a$, dans \znz{10} par exemple, $sym_+(5)= 10 - 5 = 5, 5+5 = 0$.
+    il est plus compliqué de trouver un symmetrique multiplicative.
+\end{definition}

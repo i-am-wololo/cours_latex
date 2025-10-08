@@ -4,17 +4,11 @@
 		nixpkgs.url = "nixpkgs";
 	};
 
-	outputs = {nixpkgs, ...}@inputs : {
-		devShells.x86_64-linux.default = let
-			pkgs = import nixpkgs {system = "x86_64-linux";};
-		in pkgs.mkShell{
-			packages = with pkgs; [
-				texlive.combined.scheme-basic
-				sage
-				(python3.withPackages(python-pkgs: [
-				python-pkgs.ipython
-				]))
-			];
-		};
+	outputs = {nixpkgs, ...}@inputs :
+	let
+		pkgs = import nixpkgs {system = "x86_64-linux";};
+	in {
+		devShells.x86_64-linux.default = import ./nix/shell.nix {inherit pkgs;};
+		packages.x86_64-linux.default = import ./nix/build.nix {inherit pkgs;};
 	};
 }
