@@ -1,0 +1,65 @@
+\chapter{Matrices}
+\section{regles de notation}
+
+\begin{definition}[Matrice]
+
+\end{definition}
+
+\begin{definition}[matrice identite]
+la matrice identite est une matrice carre contenant seulemant des 1 dans sa diagonale, et des 0 dans tout les autres cases.
+\end{definition}
+
+\section{definitions}
+\begin{definition}[transpose]
+la transposition est une operation qui change les lignes en colonnes, et les colonnes en ligne.
+elle est obtenue en faisant "pivoter" les elements de la matrice autour de la diagonale.
+\end{definition}
+
+\begin{definition}[matrice inverse]
+	comme dans les autres espaces, "inverse" signifie que c'est la matrice symmetrique a une autre matrice par rapport a une operation, ici la multiplication.
+formellement, $\text{pour une matrice M,} \exists M^{-1} t.q M \cdot M^-1 \equiv M_{Id}$. \
+remarquez le $\exists M$. 
+En effet, pas toute les matrices possedent un inverse, et ceux qui en possedent un sont appelees \textbf{matrices inversibles}.
+\end{definition}
+
+
+\begin{definition}{determinant}
+le determinant d'une matrice A est donne par la formule \
+$$ det(A)=\sum_{j=1}^n (-1)^{i+j} a_{ij}{\rm det}(A_{ij}) $$
+ou $A_{ij}$ est la matrice obtenue en enlevant la ligne i et la colonne j de A.
+Cette formule est valable quelle que soit la ligne $i$
+choisie. Elle fait intervenir tous les coefficients $a_{ij}$ de cette ligne. Chacun de ces coefficients étant multiplié par le déterminant d'une matrice $(n−1) \times (n−1)$, il s'agit donc d'une définition récursive. Etant donné que cette formule donne le même résultat quelle que soit la ligne i choisie, on a intérêt à chercher dans A
+
+la ligne possèdant le plus de coefficients nuls pour réduire le nombre de calculs. Si la matrice ne contient que des coefficients non nuls, il n'y a pas à priori de stratégie particulière à adopter.
+
+Une formule équivalente existe en choisissant cette fois-ci une colonne j
+quelconque dans la matrice A :
+$$ det(A)=\sum_{i=1}^n (-1)^{i+j} a_{ij}{\rm det}(A_{ij}) $$
+\end{definition}
+
+\begin{definition}[calcul inverse de matrice]
+Afin de calculer efficacement l'inverse d'une matrice A, on peut appliquer l'algorithme de Gauss de la façon suivante :
+
+\begin{itemize}
+    \item Appliquer l'algorithme de Gauss à la matrice A afin d'obtenir une matrice triangulaire supérieure $T_A$. Pour chaque transformation effectuée au cours de l'algorithme, effectuer exactement la même transformation sur la matrice identité.
+A la fin de ce procédé vous avez obtenu 2 matrices :
+\begin{itemize}
+\item $T_A$ qui est la matrice A modifiée par l'algorithme de Gauss
+\item $I_A$ qui est la matrice identité sur laquelle on a appliqué l'ensemble des transformations effectuées sur A. En particulier on a $I_A \times A=T_A$.
+\end{itemize}
+
+\item En partant de la dernière colonne de TA et en remontant jusqu'à la deuxième colonne, appliquer le principe de Gauss afin de placer des 0 dans chaque colonne, au-dessus de l'élément diagonal. Remarque : tous les éléments diagonaux de TA étant non nuls, il n'y aura dans ce cas, aucune permutation de lignes à effectuer. Pour chaque transformation effectuée au cours de ce deuxième passage, effectuer exactement la même transformation sur la matrice IA.
+
+\item A l'issu de ce procédé on obtient donc 2 matrices :
+
+\begin{itemize}
+\item DA qui est la matrice TA
+modifiée par l'algorithme de Gauss et qui est donc à présent une matrice diagonale.
+\item SA qui est la matrice IA sur laquelle on a appliqué l'ensemble des transformations effectuées sur TA. En particulier on a $S_A \times A = D_A$
+\end{itemize}
+
+L'inverse de A est obtenu en divisant pour chaque ligne i
+de SA les coefficients de la ligne par l'élément diagonal situé sur la ligne i de la matrice DA.
+\end{itemize}
+\end{definition}
+

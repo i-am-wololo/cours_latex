@@ -1,0 +1,77 @@
+\chapter{Espace vectoriel}
+\newcommand{\exref}[1] {
+	\input{./L2Chapters/espace_vectoriel/exercices/#1}
+}
+
+\newcommand{\kk} {
+	$\mathbb{K}$
+}
+\newcommand{\vecv}[1]{
+	\vec{v_#1}
+	}
+
+\begin{definition}[K-espace vectoriel]
+	\kk-espace vectoriel designe un espace vectoriel contenant des valeurs venant de \kk \\
+	Un espace vectoriel consiste en un ensemble E, avec ces deux operations $+$ et $\cdot$, suivant ces règles pour tout $\vec{v}, \vec{W} \in E$:
+	\begin{itemize}
+		\item la loi + est interne, commutative et associative \\
+				$\vec{v}+\vec{w} \in E$ \\
+				$\vec{v}+\vec{w} = \vec{w} + \vec{v}$ \\
+				$\vec{a} + (\vec{b} + \vec{c}) = (\vec{a} + \vec{b}) + \vec{c}$
+		\item il existe un vecteur nul tel que $\vec{a}+ \vec{0} = \vec{0} + \vec{a} = \vec{a}$
+		\item pour un vecteur $\vec{a}$ quelconque dans $E$, il existe un symmetrique tel noté $sym_{e}(\vec{a})$
+	\end{itemize}
+	un élément appartenant a \kk est appelé un scalaire. il est en relation avec un vecteur grace a l'opérateur \cdot. la loi \cdot suit ces règles pour tout $\vec{v}, \vec{w} \in E, \lambda, \delta \in \mathbb{K}$
+	\begin{itemize}
+		\item $\cdot$ est dite "fermée", càd que $\lambda \cdot \vec{v} \in E$
+		\item il existe un scalaire neutre, $e$ tel que, $e \cdot \vec{v} = \vec{v}$
+		\item $(\lambda + \delta) \cdot \vec{v} = \lambda \cdot \vec{v} + \delta \cdot \vec{v}$
+		\item $\lambda \cdot (\vec{v} + \vec{w}) = \lambda \cdot \vec{v} + \lambda \cdot \vec{w}$
+		\item $(\lambda \times \delta) \cdot \vec{v} = \lambda \cdot (\delta \cdot \vec{v})$
+	\end{itemize}
+
+	pour prouver qu'un ensemble est un \kk espace vectoriel, il suffit donc juste de tester ces opérations et voir si ils correspondent a cette definition \
+	on appelle le produit d'un vecteur par un scalaire une combinaison lineaire
+\end{definition}
+
+\kk peut être n'importe quel ensemble, mais dans ce chapitre nous ne contentrons de $\mathbb{R}$,  $R[X]$, ou $\{f(x) = ax+b \text{ tq } \forall a, b \in \mathbb{R}\}$
+
+testons ce qu'on a vu avec cet exercice simple. Si non, préciser quel règle cet ensemble enfraint
+\exref{ex1.tex}
+
+
+\begin{definition}[famille de vecteurs]
+	une famille de vecteurs est un tuple composes de vecteurs;
+	on dit qu'une famille est libre si aucun des vecteurs peuvent etre une combinaison lineaire d'un autre. \
+	exemple: $((1, 1, 1), (2, 2, 2))$ est une famille liee car $\vec{v_1}$ est le double de $\vec{v_0}$
+
+	formellement, une famille est dite libre si pour $\forall \lambda_1 ... \lambda_n, \forall \vec{v_1} ... \vec{v_n}, \lambda_1 \cdot \vec{v_1} + ... + \lambda_n \cdot \vec{v_n} = 0$ il existe une unique solution ou les scalaires sont tous nul et respectivement, une famille est dite liee s'il existe au moins une solution avec les scalaires non nuls.
+\end{definition}
+
+\begin{definition}[famille generatrice]
+	\label{generatrice}
+	soit $E$ un \kk espace vectoriel et $s = (\vecv{1}, ..., \vecv{n})$ une famille de vecteur
+	$s$ est dite generatrice si il est possible d'obtenir n'importe quel vecteur de $E$ grace a une combinaison lineaire de $s$.
+	autrement dit, $\forall t \in E, \forall \lambda_1, ... \lambda_n \in \mathbb{K}, u = \lambda_1 \cdot \vecv{1} + ... + \lambda_n + \vecv{n}$
+\end{definition}
+
+\begin{definition}[Vect() ou Span()]
+	la fonction $span()$ prend une famille de vecteurs, et renvoie l'ensemble de toute les combinaison lineaires possible produite avec la famille de vecteur.
+	$span$ d'une famille generatrice donnerait l'ensemble de vecteur. \ref{generatrice}
+	\begin{remark}
+	il est donc possible de generer des ensembles vectoriel grace a cette onction, et il en decoule de cette propriete qu'il est donc possible de prouver qu'un ensemble est un \kk-espace vectoriel si il est possible de trouver une famille de vecteurs $(\vecv{0}, ..., \vecv{n})$ avec $span((\vecv{0}, ..., \vecv{n}))$ produisant l'ensemble. \
+	\end{remark}
+\end{definition}
+
+\begin{definition}[base]
+	une famille de vecteur est dite une base si elle est liee et generatrice. (base car elle est capable de generer tout un ensemble).
+
+\end{definition}
+
+
+\exref{ex2.tex}
+
+\begin{definition}[Sous Espace Vectoriel]
+
+\end{definition}
+
