@@ -45,19 +45,17 @@ Afin de calculer efficacement l'inverse d'une matrice A, on peut appliquer l'alg
 A la fin de ce procédé vous avez obtenu 2 matrices :
 \begin{itemize}
 \item $T_A$ qui est la matrice A modifiée par l'algorithme de Gauss
-\item $I_A$ qui est la matrice identité sur laquelle on a appliqué l'ensemble des transformations effectuées sur A. En particulier on a $I_A \times A=T_A$.
+$I_A$ qui est la matrice identité sur laquelle on a appliqué l'ensemble des transformations effectuées sur A. En particulier on a $I_A \times A=T_A$.
 \end{itemize}
 
 \item En partant de la dernière colonne de TA et en remontant jusqu'à la deuxième colonne, appliquer le principe de Gauss afin de placer des 0 dans chaque colonne, au-dessus de l'élément diagonal. Remarque : tous les éléments diagonaux de TA étant non nuls, il n'y aura dans ce cas, aucune permutation de lignes à effectuer. Pour chaque transformation effectuée au cours de ce deuxième passage, effectuer exactement la même transformation sur la matrice IA.
-
-\item A l'issu de ce procédé on obtient donc 2 matrices :
-
+A l'issu de ce procédé on obtient donc 2 matrices :
 \begin{itemize}
-\item DA qui est la matrice TA
-modifiée par l'algorithme de Gauss et qui est donc à présent une matrice diagonale.
-\item SA qui est la matrice IA sur laquelle on a appliqué l'ensemble des transformations effectuées sur TA. En particulier on a $S_A \times A = D_A$
-\end{itemize}
 
+    DAqui est la matrice TA
+modifiée par l'algorithme de Gauss et qui est donc à présent une matrice diagonale.
+SAqui est la matrice IA sur laquelle on a appliqué l'ensemble des transformations effectuées sur TA. En particulier on a SA×A=DA
+\end{itemize}
 L'inverse de A est obtenu en divisant pour chaque ligne i
 de SA les coefficients de la ligne par l'élément diagonal situé sur la ligne i de la matrice DA.
 \end{itemize}
