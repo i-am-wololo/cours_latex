@@ -4,8 +4,18 @@
 		python-pkgs.ipython
 		]))
 		(texlive.combine {
-			inherit (texlive) scheme-small amsmath titlesec;
+			inherit (texlive) latexmk scheme-small amsmath titlesec;
 		})
+		(pkgs.writeShellScriptBin "buildlatex" ''
+				${pkgs.texlivePackages.latexmk}/bin/latexmk -pdf "$1" && \
+				${pkgs.texlivePackages.latexmk}/bin/latexmk -c "$1"
+			'')
 	];
+	shellHook = ''
+		# function buildlatex {
+		# 	latexmk $1 && latexmk -c $1
+		# }
+		echo -- latex environment loaded --
+	'';
 }
 

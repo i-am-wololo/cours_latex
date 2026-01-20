@@ -1,0 +1,233 @@
+\section{correction sujet 2025}
+
+\subsection{exercice 1: questions de cours}
+
+\begin{exercise}
+		Un signal sinusoidal definie par 3 parametres $A, \omega, \phi$ et par la fonction
+	\begin{equation}
+		f(t) = Asin(\omega t+\phi)
+	\end{equation}
+	comment s'appellent les 3 types de modulation simple de ce signal permettant d'augmenter sa valence?
+\end{exercise}
+
+\begin{ans}
+	On a vu en cours que pour convertir un signal digital a un signal analogique on utilise un modulateur. le modulateur emet ainsi un signal sinusoidal, suivant un peu pres la fonction de l'exercice.
+	la valence est le nombre d'etats qu'on peut encoder.
+	on peut augmenter la valence avec les 3 types de modulations:
+	\begin{itemize}
+		\item Le ASK (Amplitude Shift Keying) qui consiste a modifier l'amplitude
+		\item Le PSK (Phase Shift Keying) qui consiste a modifier la phase
+		\item le FSK (Frequency Shift Keying) qui consiste a modifier la frequence
+	\end{itemize}
+\end{ans}
+
+\begin{exercise}
+	A quoi sert le protocole DNS? Comment fonctionne t-il? a quel couche OSI appartient-il?
+\end{exercise}
+
+\begin{ans}
+	Le protocole DNS sert a associer un nom de domaine a une adresse IP (www.google.com -> 142.251.111.99).
+	il fait partie de la couche application/couche 7
+	Son fonctionnement est comme tel:
+	\begin{enumerate}
+		\item le client interroge un serveur dns qui gere tel TLD (les extensions .com, .fr etc)
+		\item le serveur renvoie quel ip correspond au reste du nom (www.google)
+	\end{enumerate}
+\end{ans}
+
+\begin{exercise}
+ Dans un reseau IPV4, peut on se passer d'un serveur DHCP? Si oui, comment? si non, justifier.
+\end{exercise}
+
+\begin{ans}
+ DHCP est le service permettant l'attribution automatique d'IPs a un reseau sans avoir passer a une configuration. Il est possible de s'en passer en attribuant les adresses IPs manuellement (on appelle ca l'adressage statique). si l'adressage statique n'est pas fait et qu'il n'y a pas de serveur dhcp, une machine serait inaccessible du reste du reseau, car elle n'aura pas d'IP.
+\end{ans}
+
+\begin{exercise}
+	quel est la difference entre un "hub" (concentrateur) et un "switch" (commutateur)
+\end{exercise}
+
+\begin{ans}
+	un hub fait partie de la couche physique/1 du modele OSI. il n'a pas de logique, il fait que de distribuer les donnees qu'il recoit a son port d'entree vers les machines branchees a ses ports de sorties. //
+	un switch fait partie de la couche liaison/2 du modele OSI. il sait distinguer entres les machines, car il garde une table d'adresses mac. quand il recoit un paquet, il le redirige a l'adresse mac destine.
+\end{ans}
+
+\begin{exercise}
+	indiquer pour chacune si elle correspondent a une adresse ipv4, ipv6, mac ou invalide.
+	\begin{itemize}
+		\item \verb|7::1::20::25::|
+		\item \verb|11:22:33:aa:bb:cc:11:22:33:aa:bb:cc|
+		\item \verb|2.0.2.5|
+		\item \verb|192.168.256.2|
+	\end{itemize}
+\end{exercise}
+
+\begin{ans}
+	une adresse IPV4 suit ces regles:
+	\begin{enumerate}
+		\item 4 nombres allant de 0 a 255, car chaque nombre represente un octet
+	\end{enumerate}
+	une adresse IPV6 suit ces regles:
+	\begin{enumerate}
+		\item contient 8 groupes de 4 caracteres, separe par des :
+		\item un groupe est encode sur 2 octets. les valeurs sont donc entre 0 et ffff.
+		\item le :: est un symbole signifiant "insere autant de groupes nulles possible". il est utilisable seulement une fois, car s'il etait utilisable plusieurs fois, la machine ne saurait pas ou mettre les donnees entre des groupes de 0
+	\end{enumerate}
+
+	Une adresse mac suit ces regles:
+	\begin{enumerate}
+	\item contient 6 groupes de 2 caracteres, separe par des :
+	\item un groupe est encode sur 1 octet. les valeurs sont donc entre 0x00 et 0xff
+	\end{enumerate}
+
+	la premiere adresse est IPV6 mais invalide, car le :: est utilise plusieurs fois. \\
+	la deuxieme est invalide. elle ressemble a une adresse mac, mais elle est beaucoup plus longue. elle ne correspond pas a IPV6 non plus car le separateur ipv6 est ::. \\
+	la 3eme est une ipv4 valide. \\
+	la 4eme est fausse, elle depasse l'interval de valeurs possible "256"
+\end{ans}
+
+\begin{exercise}
+	quelle est la question pose a l'utilisateur lors de la premiere connection ssh? a quoi sert elle?
+\end{exercise}
+
+\begin{ans}
+	lors de la premiere connection, ssh ne connait pas le serveur. il demande donc a l'utilisateur de generer une empreinte cryptographique afin de s'assurer de l'authenticite du serveur lors des prochaines connections.
+\end{ans}
+
+\begin{exercise}
+Lors d'un ping vers une IP non attribue, une reponse est-elle recu et de qui si on suppose la machine etre sur le meme brin reseau (le meme reseaux)? et si on suppose etre sur le meme reseau?
+\end{exercise}
+
+\begin{ans}
+Il y a 2 scenarios possible: soit la machine est deja sur le reseau, dans ce cas avant de faire un ping, on demande aux autres machines quel machine a cette ip avec une requete ARP. s'il n'y a aucunes, la machine cliente reportera une erreur car personne aura repondu a sa requete ARP.
+si la machine n'est pas sur le reseau (une machine sur internet), il n'y aura pas de reponse. la machine cliente va s'arreter au bout d'un moment et reporter un message "temps excede" (timeout)
+\end{ans}
+
+\begin{exercise}
+La RFC 1149 propose un protocole IP over avion qui consiste a transporter des paquets ips a l'aide de pigeons voyageurs.
+sachant qu'un pigeon peut voyager jusqu'a 50km/h et porter une charge de 250g, pensez vous que ce mode de transport soit adapte au reseau internet en general ou bien a un usage specifique?
+\end{exercise}
+
+\begin{ans}
+	50kmh est beaucoup trop lent. cela voudrais dire des latence d'au moins une demi heure seulement pour rafraichir une page web. il serait donc impossible a utiliser pour tout ce qui est temps reel, appels, streaming etc.
+	mais supposons qu'on se foute de la latence. si on est intelligent sur la charge, on peut equiper un pigeons de plusieurs micro carte sd. on aura alors un debit eleve, mais seulement car la quantite maximum de donnees qu'on peut transporter est eleve.
+	donc en general, jamais ca ne marcherait.
+\end{ans}
+
+\subsection{exercice 2: configuration reseau}
+	on a une machine configure avec l'adresse ipv4 162.2.20.25/21
+\begin{exercise}
+	\begin{enumerate}
+		\item quel est l'adresse reseau de l'entreprise
+		\item quel est l'adresse de broadcast
+		\item combien d'adresses sont attribuables
+	\end{enumerate}
+\end{exercise}
+
+\begin{ans}
+	on a vu tout a l'heure qu'un nombre d'une ip ipv4 tient sur un octet, ou 8 bit.
+	ce qui veut dire qu'une ip ipv4 fait en total 32 bits. \\
+	le sous masque peut etre exprime de deux facons, soit par une ip, soit par la taille de son prefix.
+	ici on est donne une longueur de prefix de 21 bits, soit 8+8+7.
+	l'adresse sous reseau est donc \verb|1111 1111.1111 1111.1111 1000.000...| ou en decimal \verb|255.255.248.0|
+	le 3 eme nombre est 20, on doit donc trouver le plus grand multiple de 8 (256-248) qui est inferieur a 20 => 16
+	l'adresse du reseau est: \verb|162.2.16.0|
+	le broadcast est l'adresse la plus grande possible. ici c'est  \verb|162.2.{16+8-1=23}.255|
+	on a 11 bits qui ne sont pas fixes par le masque, donc $2^11-2$ ip possibles, -1 pour ne pas compter le broadcast, et -1 pour l'adresse reseau.
+
+\end{ans}
+
+\begin{exercise}
+completer la table de routage (referrer au sujet, j'ai la flemme de copier la consigne en entiere)
+\end{exercise}
+
+\begin{ans}
+	il suffit juste de mettre l'adresse reseau qu'on a trouve dans le tableau
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+		reseau & prefix longueur & passerelle & interface \\
+		127.0.0.1 & 8 & \em & lo \\
+		162.2.16.0/21 & 21 & \em & \verb|eth0| \\
+		defaut & 0 & 162.2.23.254 & \verb|eth0| \\
+		\end{tabular}
+	\end{center}
+162.2.23.254 est l'adresse du routeur. en effet, la consigne dit que le routeur prend l'ip la plus grande
+\end{ans}
+
+\begin{exercise}
+	en gros, la consigne dit de donner un masque le plus petit possible pour les sous reseaux suivant:
+	\begin{itemize}
+		\item administration systeme avec au moins 30 machines
+		\item compta avec au moins 8 machines
+		\item users avec au moins 200 machines
+	\end{itemize}
+\end{exercise}
+
+\begin{ans}
+	Administration systeme: \\
+	on donne un prefixe de /26 qui donne 64-2 ips possible. l'adresse reseau est donc 162.2.16.0/26, avec le broadcast etant 162.2.16.63. \\
+
+	compta: \\
+	on donne un prefixe de  /28, qui donne 14 ips. l'adresse reseau est 162.2.16.64/28 avec le broadcast etant  162.2.16.79
+
+	users: \\
+	on donne un prefix de /24, qui donne 254 ips. l'adresse reseau est 162.2.17.0/24 avec le broadcast etant 162.2.17.255
+\end{ans}
+
+\begin{exercise}
+dessin du nouveau reseau
+\end{exercise}
+
+\begin{ans}
+\end{ans}
+
+\begin{exercise}
+	table de routage d'une machine dans admin systeme.
+\end{exercise}
+
+\begin{ans}
+\end{ans}
+
+\subsection{Exercice 3}[CRC]
+
+\begin{exercise}
+on suppose dans cet exercice que le polynome generateur utilise est $G = x^2+x+1$.
+\begin{itemize}
+	\item on souhaite transmettre le mot 10010 quel est le code crc a ajouter?
+	\item on recoit 101110. est il correcte?
+\end{itemize}
+\end{exercise}
+
+\begin{ans}
+
+  Le CRC est un moyen de vérifier l'intégrité des données via un code detecteur d'erreur.
+  Il est calculé en effectuant la division euclidienne d'une séquence de bits par un polynome lui aussi representé par une sequence de bits.
+  Les étapes a suivre pour une donnée $D$ et un polynome $P$ de degré $n$ sont:
+	\begin{enumerate}
+  \item on converti $P$ en bits.
+  \item on ajoute $n$ $0$ à $D$ afin de réserver l'espace pour y insérer le CRC.
+  \item puis on fait une division euclidienne de $D$ par $P$. Attention, c'est une division dans $\mathbb{F} 2$. la soustraction est donc l'opérateur ou-exclusif $xor$
+  \item Le code CRC sera le reste de la division euclidienne. Il suffira de l'inserer dans l'espace qu'on lui a reservé dans $D$ pour l'appliquer dessus.
+
+	\end{enumerate}
+
+pour vérifier l'intégrité des données, il suffit de diviser la donnée $D$ (avec son CRC) par le polynome $P$. si le reste est non nul, ça veut dire que la donnée est corrompue ou modifiée.
+
+\begin{itemize}
+	\item on a le polynome $G=x^2+x+1$, ce qui donne en binaire \verb|111|.
+	\item le degre du polynome est 2, donc on ajoute 2 zeros a notre donnee => \verb|1001000|
+	\item on fait la division
+\end{itemize}
+	\begin{figure}
+		\includegraphics[width=50mm]{./sections/div.png}
+		\caption{Division de 1001000 par 111}
+	\end{figure}
+	on nous demande ensuite de verifier l'integrite du message 101110. Il suffit de faire une division par 111 a nouveau.
+	\begin{figure}
+		\includegraphics[width=50mm]{./sections/Untitled-2026-01-06-2028.png}
+		\caption{Division de 101110 par 111}
+	\end{figure}
+	le reste est non nul, donc le message n'est pas correct
+\end{ans}
+
+\subsection{exercice 4}

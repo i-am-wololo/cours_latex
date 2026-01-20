@@ -1,0 +1,29 @@
+\chapter{Introduction}
+
+\begin{definition}[algorithm]
+	un algorithme est caractérisé par ces 3 structures:
+	\begin{enumerate}
+		\item structure séquentielle: l'étape n ne se passe pas avant l'étape n-1
+		\item structure conditionnelle: certaines sont executés seulement si une condition est résolu
+		\item structure repetitive: des étapes peuvent être répétés
+	\end{enumerate}
+	aussi, un algorithme suit toujours ces propriétés:
+	\begin{enumerate}
+		\item il y a toujours une fin (finitude)
+		\item il n'y a pas d'étapes aléatoires (déterminisme)
+		\item il y a toujours une entrée et une sortie (attention, dans le monde réél, même si une fonction est de type void ou ne retourne generalement rien, ses modifications a l'environnement qui l'entoure est la sortie)
+	\end{enumerate}
+\end{definition}
+
+un algorithme est souvent conçu par ces étapes:
+\begin{enumerate}
+	\item on énonce le problème et ses entrées/sorties
+	\item puis, on essaye de le formaliser (cette étape est utile car elle sert aussi a trouver le format approprié pour encoder les instances)
+	\item abstraction (c'est un peu une continuation de l'étape 2)
+	\item puis l'algorithme est conçu a partir du format d'instance qu'on a décidé precedemment
+\end{enumerate}
+
+
+\begin{definition}[instance]
+les données d'un problème sont appelé une instance, et par extension leur versions encodé servant d'entrée pour un certain algorithme aussi
+\end{definition}
