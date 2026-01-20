@@ -1,0 +1,26 @@
+\chapter{entropie}
+
+\begin{definition}[l'entropie]
+	l'entropie d'une variable aleatoire est une mesure pour le niveau d'incertitude des issues possible.
+	l'entropie d'un element faisant partie d'une variable aleatoire $x_i \in X$ est calcule ainsi:
+	\begin{equation}
+	I(x_i) = -log_2(P(x_i)) = log_2(1/P(x_i))
+	\end{equation}
+	avec les proprietes du logarithme, on peut simplifier le calcul car $log(1/x) = -log(x)$ \\
+	Pour calculer l'entropie d'une variable aleatoire entiere, c'est comme calculer une moyenne ou les coefficients seraient la probabilite d'une issue:
+
+	\begin{equation}
+		H(X) = \sum_{i=0}^{n} P(x_i)I(x_i) = - \sum_{i=0}^{n} P(x_i)log_2(p(x_i))  
+	\end{equation}
+
+	celle ci est vrai si et seulement si distribution uniforme, car tout issues auront une probabilite de $\frac{1}{|X|}$
+	\begin{equation}
+	H(X) = \sum_{i=0}^{n} P(x_i)(-log_2(|X|)) = log_2(|X|)) \\
+	\end{equation}
+	car la somme des probas de toute les issues possible est 1
+
+\end{definition}
+
+\begin{definition}[proprietes de $H(X)$]
+	
+\end{definition}
